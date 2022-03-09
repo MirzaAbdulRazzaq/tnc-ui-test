@@ -1,0 +1,39 @@
+.close{
+    cursor: pointer;
+    /* background-color: white; */
+    /* border-left: none; */
+}
+
+.close:hover{
+    background-color: rgb(77, 85, 85);
+    color: white;
+}
+
+.close-ans{
+    background-color: white; 
+    outline: none; 
+    border: none; 
+    cursor: pointer;
+}
+
+.qno{
+    padding-right: 32px;
+    background-color: white;
+    outline: none;
+    border: none;
+}
+
+.add-ans{
+    background-color: white;
+    outline: none;
+    border: none;
+    position:absolute;
+    bottom:0;
+    margin-bottom: 17px;
+    margin-left: 40px;
+}
+
+.question{
+    background-color: red;
+    color: white;
+}

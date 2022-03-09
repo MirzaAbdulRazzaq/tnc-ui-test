@@ -1,0 +1,72 @@
+<nav class="navbar navbar-dark bg-primary">
+  <div class="container-fluid">
+    <label class="navbar-brand">TNC UI Test</label>
+  </div>
+</nav>
+
+
+<div class="container p-5">
+  <div class="row justify-content-center">
+    <div class="col-8">
+
+      <form [formGroup]="QuestionForm" novalidate (ngSubmit)="AddQuestions()">
+        <div class="row" formArrayName="Questions" *ngFor="let question of QuestionFormGroup.controls; let i = index">
+          
+          <div [formGroupName]="i">
+            <div class="form-row">
+
+              <div class="col-12">
+                <div class="input-group mb-3">
+                  <span class="input-group-text question">Q. {{i + 1}}</span>
+                  <input formControlName="Question" type="text" class="form-control"
+                    placeholder="Type Your Question Here">
+                  <span class="input-group-text close" (click)="removeQuestion(i)">remove X</span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-8">
+                  <div class="row" formArrayName="Answers" *ngFor="let answer of getAnswersFormGroup(i).controls; let j = index">
+                    <div [formGroupName]="j">
+                      <div class="col-12">
+                        <div class="input-group mb-3">
+                          <span class="input-group-text qno">{{j + 1}}</span>
+                          <input formControlName="Answer" type="text" class="form-control"
+                            [placeholder]="'Answer ' + (j+1)">
+                          <span class="input-group-text close-ans" (click)="removeAnswer(i,j)">X</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-2" style="position: relative;">
+                  <button type="button" class="btn btn-light add-ans" (click)="AddAnswer(i)">Add +</button>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-4">
+            <button type="button" class="btn btn-danger btn-block" style="width: 100%;" (click)="AddQuestion()">Add Question +</button>
+          </div>
+        </div>
+        <div class="row justify-content-end">
+          <div class="col-4 mt-3">
+            <button type="submit" class="btn btn-warning" style="width: 100%;">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-12">
+    {{QuestionForm.value | json}}
+  </div>
+</div>
